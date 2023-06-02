@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animation Example</title>
+  <style>
+    #animationBox {
+      width: 200px;
+      height: 200px;
+      background-color: purple;
+      position: relative;
+    }
+     body {
+      text-align: center;
+    }
+    .list-container {
+      text-align: center;
+      display: inline-block;
+    }
+    #animationBox .animationElement {
+      width: 50px;
+      height: 50px;
+      background-color: yellow;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation-name: rotate;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+<h1 style="text-decoration: underline; color:skyblue;">JAVASCRIPT TASK-8</h1>
+
+  <div class="list-container">
+  <div id="animationBox"></div>
+  <h1>CLICK THE BUTTON TO HANDLE ANIMATION!</h1>
+  <button id="startButton">Start Animation</button>
+  <button id="stopButton">Stop Animation</button>
+  
+  
+  <script>
+    const animationBox = document.getElementById('animationBox');
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    let animationInterval;
+    
+    function startAnimation() {
+      animationInterval = setInterval(() => {
+        animationBox.innerHTML = '<div class="animationElement"></div>';
+      }, 2000);
+    }
+    
+    function stopAnimation() {
+      clearInterval(animationInterval);
+      animationBox.innerHTML = '';
+    }
+    
+    startButton.addEventListener('click', startAnimation);
+    stopButton.addEventListener('click', stopAnimation);
+  </script>
+  </div>
+</body>
+</html>
